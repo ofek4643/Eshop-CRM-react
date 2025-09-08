@@ -11,7 +11,7 @@ import ProductManagement from "./pages/ProductManagement/ProductManagement";
 import UserPage from "./pages/UserPage/UserPage";
 import AddProduct from "./pages/AddProduct/AddProduct";
 import EditProduct from "./pages/EditProduct/EditProduct";
-import ProtectedRoute from "./Components/ProtectedRoute";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "./store/store";
 import { getUserThunk } from "./store/slices/userSlice";

@@ -65,10 +65,9 @@ const UserManagement = () => {
       setLoadingChangePermissions(true);
       const newRole = currentRole === "user" ? "admin" : "user";
       const res = await switchPermissionsApi(id, newRole);
-      toast.success(res.data.message);
-
       const usersRes = await getUsersApi();
       setUsers(usersRes.data);
+      toast.success(res.data.message);
     } catch (error: any) {
       toast.error(error.response?.data?.error || "שגיאה בעדכון הרשאה");
     } finally {

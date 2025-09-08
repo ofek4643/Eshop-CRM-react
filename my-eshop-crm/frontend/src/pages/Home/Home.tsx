@@ -12,7 +12,9 @@ import { getOrdersApi } from "../../api/order";
 import { getUsersApi } from "../../api/user";
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
+  const [loadingOrders, setLoadingOrders] = useState(true);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [loadingUsers, setLoadingUsers] = useState(true);
   const [orders, setOrders] = useState<Order[]>([]);
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
@@ -26,7 +28,7 @@ const Home = () => {
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        setLoadingOrders(false);
       }
     };
     fetchOrders();
@@ -40,30 +42,30 @@ const Home = () => {
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        setLoadingProducts(false);
       }
     }
     getProducts();
   }, []);
 
   useEffect(() => {
-    async function getProducts() {
+    async function getUsers() {
       try {
         const res = await getUsersApi();
         setUsers(res.data);
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        setLoadingUsers(false);
       }
     }
-    getProducts();
+    getUsers();
   }, []);
 
   return (
     <div className={styles.dashBoard}>
       <h2 className={styles.pageTitle}>לוח בקרה ראשי</h2>
-      {loading ? (
+      {loadingOrders || loadingProducts || loadingUsers ? (
         <div className={styles.loadingContainer}>
           <span className={styles.loadingSpinner}></span>
           <span>טוען הזמנות...</span>
