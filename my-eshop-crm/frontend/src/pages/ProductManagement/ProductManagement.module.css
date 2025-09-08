@@ -1,0 +1,190 @@
+/* כללי */
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* כפתור הוספת מוצר */
+.addProductBtn {
+  background-color: #1976d2; /* כחול */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.addProductBtn:hover {
+  background-color: #1565c0;
+  transform: scale(1.05);
+}
+
+.addProductBtn:active {
+  transform: scale(0.95);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f0f0f0;
+  color: #555;
+}
+
+.table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.editBtn,
+.deleteBtn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.editBtn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.editBtn:hover {
+  background-color: #43a047;
+  transform: scale(1.05);
+}
+
+.deleteBtn {
+  background-color: #f44336;
+  color: white;
+}
+
+.deleteBtn:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+.popoutOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popout {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}
+
+.popoutActions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.confirmBtn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.confirmBtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  background-color: #aaa;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #555;
+}
+
+.loadingSpinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #1976d2;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.noProducts {
+  color: #777;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.addProductBtn {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.addProductBtn:hover {
+  background-color: #1565c0;
+  transform: scale(1.05);
+}
+
+.addProductBtn:active {
+  transform: scale(0.95);
+}

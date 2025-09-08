@@ -1,0 +1,67 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardWide {
+  grid-column: span 2;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.orderList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.orderItem {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.orderItem:last-child {
+  border-bottom: none;
+}
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  font-size: 16px;
+  color: white;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(0, 128, 255, 0.925);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  margin-right: 75px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
