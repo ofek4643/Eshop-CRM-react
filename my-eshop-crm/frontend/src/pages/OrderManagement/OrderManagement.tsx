@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./OrderManagement.module.css";
-import { Order } from "../../types/Order";
+import type { Order } from "../../types/Order";
 import { toast } from "react-toastify";
-import { deleteOrderApi, fetchOrdersApi } from "../../api/order";
+import { deleteOrderApi, getOrdersApi } from "../../api/order";
 
+// קומפוננטה לניהול הזמנות
 const OrderManagement = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [popout, setPopout] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState("");
 
+  // ייבוא הזמנות מהשרת
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetchOrdersApi();
+        const res = await getOrdersApi();
         setOrders(res.data);
       } catch (error) {
         console.log(error);
@@ -25,6 +27,7 @@ const OrderManagement = () => {
     fetchOrders();
   }, []);
 
+  // מחיקת הזמנה
   const deleteOrder = async (id: string) => {
     setLoading(true);
     try {
@@ -39,6 +42,7 @@ const OrderManagement = () => {
     }
   };
 
+  // פונקציה לפתיחת את ה popout ושמירת ID של המשתמש
   const openPopout = (id: string) => {
     setSelectedOrderId(id);
     setPopout(true);

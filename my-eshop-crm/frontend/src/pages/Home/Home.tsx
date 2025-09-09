@@ -6,11 +6,12 @@ import {
 } from "react-icons/fa";
 import styles from "./Home.module.css";
 import { useEffect, useState } from "react";
-import { Order } from "../../types/Order";
+import type { Order } from "../../types/Order";
 import { getProductsApi } from "../../api/product";
 import { getOrdersApi } from "../../api/order";
 import { getUsersApi } from "../../api/user";
 
+// קומפוננטה לדף הבית
 const Home = () => {
   const [loadingOrders, setLoadingOrders] = useState(true);
   const [loadingProducts, setLoadingProducts] = useState(true);
@@ -20,6 +21,7 @@ const Home = () => {
   const [users, setUsers] = useState([]);
   const totalIncome = orders.reduce((sum, order) => sum + order.totalPrice, 0);
 
+  // ייבוא הזמנות מהשרת
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -34,6 +36,7 @@ const Home = () => {
     fetchOrders();
   }, []);
 
+  // ייבוא מוצרים מהשרת
   useEffect(() => {
     async function getProducts() {
       try {
@@ -48,6 +51,7 @@ const Home = () => {
     getProducts();
   }, []);
 
+  // ייבוא משתמשים מהשרת
   useEffect(() => {
     async function getUsers() {
       try {

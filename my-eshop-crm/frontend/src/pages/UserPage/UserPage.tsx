@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { OrderItem, Order } from "../../types/Order";
+import type { OrderItem, Order } from "../../types/Order";
 import styles from "./UserPage.module.css";
 import { getUserByIdApi } from "../../api/user";
 import { getUserOrdersApi } from "../../api/order";
 
-const UserPage = () => {
+// קומפוננטה לפרטי משתמש
+const UserPage: React.FC = () => {
   const { id } = useParams();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,11 +21,13 @@ const UserPage = () => {
     0
   );
 
+  // מושך את פרטי משתמש והזמנות
   useEffect(() => {
     async function fetchData() {
-      if (!id) return; // אם אין id, לא מריצים את הקריאה
+      if (!id) return;
       try {
-        // משיכת פרטי המשתמש
+        
+        // משיכת פרטי משתמש
         const userRes = await getUserByIdApi(id);
         setUserName(userRes.data.userName);
         setEmail(userRes.data.email);
@@ -33,7 +36,7 @@ const UserPage = () => {
         // משיכת ההזמנות
         const ordersRes = await getUserOrdersApi(id);
         setOrders(ordersRes.data);
-        const allItems = ordersRes.data.flatMap((order: any) => order.items);
+        const allItems = ordersRes.data.flatMap((order: Order) => order.items);
         setItems(allItems);
       } catch (error: any) {
         toast.error(error.response?.data?.error || "שגיאה בטעינת נתונים");

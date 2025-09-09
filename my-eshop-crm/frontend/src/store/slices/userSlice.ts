@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { User } from "../../types/User";
+import type { User } from "../../types/User";
 import { getAdminApi } from "../../api/user";
 
 // Thunk שמושך את פרטי המשתמש מהשרת

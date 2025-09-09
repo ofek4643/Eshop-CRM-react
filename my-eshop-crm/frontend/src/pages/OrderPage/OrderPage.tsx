@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./OrderPage.module.css";
-import { AddressFormData } from "../../types/Address";
-import { OrderItem } from "../../types/Order";
+import type { AddressFormData } from "../../types/Address";
+import type { OrderItem } from "../../types/Order";
 import { getOrderApi } from "../../api/order";
 
+// קומפוננטה לפרטי הזמנה
 const MyOrder = () => {
   const { id } = useParams();
   const [items, setItems] = useState<OrderItem[]>([]);
@@ -20,6 +21,7 @@ const MyOrder = () => {
     0
   );
 
+  // משיכת פרטי הזמנה
   useEffect(() => {
     const fetchOrder = async () => {
       if (!id) return;

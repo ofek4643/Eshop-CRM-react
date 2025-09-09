@@ -1,4 +1,4 @@
-import { AddressFormData } from "./Address";
+import type { AddressFormData } from "./Address";
 
 export interface OrderItem {
   productId: string;

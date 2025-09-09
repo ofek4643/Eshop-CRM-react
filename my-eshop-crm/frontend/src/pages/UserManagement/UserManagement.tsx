@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import styles from "./UserManagement.module.css";
 import { Link } from "react-router-dom";
-import { User } from "../../types/User";
+import type { User } from "../../types/User";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../../store/store";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store/store";
 import {
   deleteUserApi,
   getUsersApi,
   switchPermissionsApi,
 } from "../../api/user";
 
+// קומפוננטה לניהול משתמשים
 const UserManagement = () => {
   const { myUser } = useSelector((state: RootState) => state.user);
-
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [popout, setPopout] = useState(false);
@@ -22,6 +22,7 @@ const UserManagement = () => {
   const [loadingChangePermissions, setLoadingChangePermissions] =
     useState(false);
 
+  // משיכת משתמשים
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -36,6 +37,7 @@ const UserManagement = () => {
     fetchUsers();
   }, []);
 
+  // פונקציה להסרת יוזר
   const handleDeleteUser = async (id: string) => {
     try {
       setLoadingDelete(true);
@@ -50,16 +52,19 @@ const UserManagement = () => {
     }
   };
 
+  // פונקציה לפתיחת את ה popout ושמירת ID של המשתמש
   const openPopout = (id: string) => {
     setSelectedUserId(id);
     setPopout(true);
   };
 
+  // פונקציה לסגירת את ה popout ומחיקת ID של המשתמש
   const closePopout = () => {
     setPopout(false);
     setSelectedUserId(null);
   };
 
+  // שינוי הרשאות למשתמש
   const handleToggleRole = async (id: string, currentRole: string) => {
     try {
       setLoadingChangePermissions(true);

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ProductManagement.module.css";
-import { Product } from "../../types/Product";
+import type { Product } from "../../types/Product";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { deleteProductApi, getProductsApi } from "../../api/product";
 
+// קומפוננטה לניהול מוצרים
 const ProductManagement = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -12,11 +13,13 @@ const ProductManagement = () => {
   const [selectedProductId, setSelectedProductId] = useState("");
   const navigate = useNavigate();
 
+  // פונקציה לפתיחת את ה popout ושמירת ID של המשתמש
   const openPopout = (id: string) => {
     setSelectedProductId(id);
     setPopout(true);
   };
 
+  //הסרת מוצר
   const deleteProduct = async (id: string) => {
     setLoading(true);
     try {
@@ -31,12 +34,13 @@ const ProductManagement = () => {
     }
   };
 
+  //משיכת מוצרים
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const res = await getProductsApi();
         setProducts(res.data);
-      } catch (error) {
+      } catch (error: any) {
         toast.error(error.response?.data?.error || "שגיאה במשיכת מוצרים");
       } finally {
         setLoading(false);

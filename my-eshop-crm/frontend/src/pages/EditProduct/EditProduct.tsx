@@ -1,10 +1,10 @@
-// EditProduct.tsx
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./EditProduct.module.css";
 import { toast } from "react-toastify";
 import { editProductApi, getProductApi } from "../../api/product";
 
+// קומפוננטה לעריכת מוצר
 const EditProduct = () => {
   const { id } = useParams<{ id: string }>();
 
@@ -16,6 +16,7 @@ const EditProduct = () => {
   const [loading, setLoading] = useState(true);
   const [loadingUpdate, setLoadingUpdate] = useState(false);
 
+  // ייבוא מוצר
   useEffect(() => {
     async function fetchProduct() {
       try {
@@ -29,7 +30,7 @@ const EditProduct = () => {
         setStock(data.stock);
         setDescription(data.description);
         setImageUrl(data.imageUrl);
-      } catch (error) {
+      } catch (error: any) {
         toast.error(error.response?.data?.error || "שגיאה במשיכת מוצר");
       } finally {
         setLoading(false);
@@ -38,6 +39,7 @@ const EditProduct = () => {
     fetchProduct();
   }, [id]);
 
+  // פונקציה לעריכת מוצר
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -51,7 +53,7 @@ const EditProduct = () => {
         id
       );
       toast.success(res.data.message);
-    } catch (error) {
+    } catch (error: any) {
       toast.error(error.response?.data?.error || "שגיאה בעדכון מוצר");
     } finally {
       setLoadingUpdate(false);

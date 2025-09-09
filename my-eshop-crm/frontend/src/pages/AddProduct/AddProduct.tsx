@@ -1,9 +1,9 @@
-// AddProduct.tsx
 import React, { useState } from "react";
 import styles from "./AddProduct.module.css";
 import { toast } from "react-toastify";
 import { addProductApi } from "../../api/product";
 
+// קומפוננטה ליצירת מוצר
 const AddProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -12,6 +12,7 @@ const AddProduct = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // פונקציה ליצירת מוצר
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -24,6 +25,8 @@ const AddProduct = () => {
         imageUrl,
       });
       toast.success(res.data.message);
+      
+      // איפוס השדות
       setName("");
       setPrice(0);
       setStock(0);

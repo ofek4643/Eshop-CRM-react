@@ -13,9 +13,11 @@ import AddProduct from "./pages/AddProduct/AddProduct";
 import EditProduct from "./pages/EditProduct/EditProduct";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "./store/store";
+import type { AppDispatch } from "./store/store";
 import { getUserThunk } from "./store/slices/userSlice";
 const App = () => {
+  
+  // מושך את היוזר בשביל ProtectedRoute
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {

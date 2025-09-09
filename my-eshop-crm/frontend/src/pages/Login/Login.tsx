@@ -3,10 +3,11 @@ import styles from "./Login.module.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { adminLoginApi, verifyOtpApi } from "../../api/auth";
-import { RootState, AppDispatch } from "../../store/store";
+import type { AppDispatch } from "../../store/store";
 import { setUser } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
 
+// קומפוננטה להתחברות
 const Login: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [email, setEmail] = useState("");
@@ -16,6 +17,7 @@ const Login: React.FC = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
+  // פונקציה התחברות
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let errors = false;
@@ -31,17 +33,19 @@ const Login: React.FC = () => {
       errors = true;
     }
 
+    // במידה ויש שגיאה
     if (errors) {
       toast.error("יש למלא את כל השדות בצורה תקינה");
       return;
     }
 
+    // אימות התחברות
     try {
       setLoading(true);
       const res = await adminLoginApi({ email, password });
       toast.success(res.data.message);
       setStep("otp");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       toast.error(error.response.data?.error);
     } finally {
@@ -49,6 +53,7 @@ const Login: React.FC = () => {
     }
   };
 
+  // פוקנציה לאימות קוד
   const handleOtpSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -57,7 +62,7 @@ const Login: React.FC = () => {
       dispatch(setUser(res.data.user));
       navigate("/");
       toast.success(res.data.message);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       toast.error(error.response.data?.error);
     } finally {

@@ -1,69 +1,74 @@
-# React + TypeScript + Vite
+# 🛒 Eshop CRM React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+מערכת CRM לניהול חנות אונליין, בנויה עם **React + TypeScript + Vite**.  
+המערכת כוללת ניהול משתמשים, מוצרים, הזמנות ועוד.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 טכנולוגיות עיקריות
 
-## Expanding the ESLint configuration
+- React 18
+- Vite
+- TypeScript
+- React Router
+- Redux Toolkit (state management)
+- Axios (קריאות API)
+- CSS Modules לעיצוב
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📂 מבנה הפרויקט
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+my-eshop-crm/
+├── dist/ # build אחרי הפקודה vite build
+├── frontend/
+│ └── src/
+│ ├── api/ # קריאות ל-API
+│ ├── Components/ # קומפוננטות חוזרות
+│ ├── pages/ # דפי מערכת (Login, Dashboard וכו')
+│ ├── store/ # Redux store
+│ ├── types/ # הגדרות TypeScript
+│ └── App.tsx # קומפוננטת הבסיס
+│ └── main.tsx # נקודת כניסה ל־React
+├── index.html # קובץ ראשי של Vite
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
+└── README.md
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ התקנה והרצה מקומית
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. שיבוט הפרויקט:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```bash
+   git clone https://github.com/ofek4643/Eshop-CRM-react.git
+
+   cd Eshop-CRM-react/my-eshop-crm
+   npm install
+   npm run dev
+   ```
+
+---
+
+## 🌐 הגדרות API
+
+בסביבת Render:
+בקובץ frontend/src/api/api.ts השאר את baseUrl שמכוון לשרת הפרודקשן.
+
+בסביבת Localhost:
+באותו קובץ, החלף את ה־baseUrl לזה שמכוון ל־ http://localhost:5000
+אפשר לעשות זאת ע"י השארת שתי שורות והערות (//) כדי להחליף ביניהן.
+
+---
+
+# 📊 פיצ'רים בפרויקט
+
+✅ התחברות אדמין
+✅ ניהול משתמשים
+✅ ניהול מוצרים
+✅ ניהול הזמנות
+✅ Dashboard עם סטטיסטיקות

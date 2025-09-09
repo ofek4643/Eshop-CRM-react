@@ -1,8 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import { FaUsers, FaBoxOpen, FaShoppingCart, FaThLarge } from "react-icons/fa";
 
+// קומפוננטה תפריט
 const NavBar = () => {
   return (
     <nav className={styles.sideBar}>
