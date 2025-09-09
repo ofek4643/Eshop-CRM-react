@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import OrderManagement from "./pages/OrderManagement/OrderManagement";
 import Layout from "./Components/Layout/Layout";
-import Order from "./pages/OrderPage/OrderPage";
+import OrderPage from "./pages/OrderPage/OrderPage";
 import UserManagement from "./pages/UserManagement/UserManagement";
 import ProductManagement from "./pages/ProductManagement/ProductManagement";
 import UserPage from "./pages/UserPage/UserPage";
@@ -16,7 +16,6 @@ import { useDispatch } from "react-redux";
 import type { AppDispatch } from "./store/store";
 import { getUserThunk } from "./store/slices/userSlice";
 const App = () => {
-  
   // מושך את היוזר בשביל ProtectedRoute
   const dispatch = useDispatch<AppDispatch>();
 
@@ -46,7 +45,7 @@ const App = () => {
           >
             <Route index element={<Home />} />
             <Route path="/orders" element={<OrderManagement />} />
-            <Route path="/order/:id" element={<Order />} />
+            <Route path="/order/:id" element={<OrderPage />} />
             <Route path="/users" element={<UserManagement />} />
             <Route path="/user/:id" element={<UserPage />} />
             <Route path="/products" element={<ProductManagement />} />
