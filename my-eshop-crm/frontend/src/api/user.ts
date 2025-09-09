@@ -18,4 +18,4 @@ export const switchPermissionsApi = (id: string, newRole: string) =>
   api.post(`/user/admin/switchPermissions/${id}`, { newRole });
 
 // התנתקות
-export const logoutUser = () => api.post("/auth/logout");
+export const logoutUser = () => api.post("/auth/logout/admin");
